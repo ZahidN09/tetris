@@ -1,16 +1,23 @@
 const ANCHO_CANVA_P = 200;
 const ALTO_CANVA_P = 400;
-const ANCHO_CANVA_S = 50;
-const ALTO_CANVA_S = 50;
+const ANCHO_CANVA_S = 60;
+const ALTO_CANVA_S = 60;
 const LADO_SECCION = 20;
-const COLUMNAS = ANCHO_CANVA_P / LADO_SECCION;
-const FILAS = ALTO_CANVA_P / LADO_SECCION;
+const COLUMNAS_P = ANCHO_CANVA_P / LADO_SECCION;
+const FILAS_P = ALTO_CANVA_P / LADO_SECCION;
+const COLUMNAS_S = ANCHO_CANVA_S / LADO_SECCION;
+const FILAS_S = ALTO_CANVA_S / LADO_SECCION;
 
 function preInicio() {
-    for (let i = 0; i < COLUMNAS; i++) {
-        dibujarRectangulo(ctxP, (i * LADO_SECCION) - 1, 0, 2, ctxP.canvas.height, "#132837");
+    dibujarGrid(ctxP,COLUMNAS_P,FILAS_P,LADO_SECCION,"#132837");
+    dibujarGrid(ctxS,COLUMNAS_S,FILAS_S,LADO_SECCION,"#132837");
+}
+
+function dibujarGrid(contexto,columnas,filas,lado_seccion,color) {
+    for (let i = 0; i < columnas; i++) {
+        dibujarRectangulo(contexto, (i * lado_seccion) - 1, 0, 2, contexto.canvas.height,color );
     }
-    for (let i = 0; i < FILAS; i++) {
-        dibujarRectangulo(ctxP, 0, (i * LADO_SECCION) - 1,  ctxP.canvas.width, 2,"#132837");
+    for (let i = 0; i < filas; i++) {
+        dibujarRectangulo(contexto, 0, (i * lado_seccion) - 1, contexto.canvas.width, 2, color);
     }
 }
