@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="tetris.css" rel="stylesheet" />
+    <script src="utilitarios.js"></script>
+</head>
+
+<body>
+    <canvas id="areaJuego" height="400" width="200"></canvas>
+    <div class="controls-section">
+
+        <button class="botonControl btn-start" onclick="start()">INICIAR</button>
+        <div class="d-pad-keyboard">
+            <button class="botonControl up" onclick="moverArriba()">▲</button>
+            <button class="botonControl left" onclick="moverIzquierda()">◄</button>
+            <button class="botonControl down" onclick="moverAbajo()">▼</button>
+            <button class="botonControl right" onclick="moverDerecha()">►</button>
+        </div>
+
+    </div>
+    <script src="funcionesCanvas.js"></script>
+</body>
+
+</html>
