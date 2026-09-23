@@ -17,10 +17,13 @@ const PIEZA_6 = [[0, 1, 1, 0], [1, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], "#ff00c
 const PIEZA_7 = [[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 0, 0], [0, 0, 0, 0], "#ff9d00", "#c07700"];
 const PIEZAS = [PIEZA_1, PIEZA_2, PIEZA_3, PIEZA_4, PIEZA_5, PIEZA_6, PIEZA_7];
 
+let piezas_disponibles = 0b1111111;
+let pieza_actual;
+
 function preInicio() {
+    generarPiezaAleatoria();
     dibujarGrid(ctxP, COLUMNAS_P, FILAS_P, LADO_SECCION, "#132837");
     dibujarGrid(ctxS, COLUMNAS_S, FILAS_S, LADO_SECCION, "#132837");
-    let pieza_actual = PIEZA_7;
     dibujarPieza(pieza_actual);
 }
 
@@ -54,6 +57,15 @@ function dibujarPieza(pieza) {
 }
 
 function generarPiezaAleatoria() {
-    let i = generarAleatorio(0, PIEZAS.length-1);
+    let i;
+    do {
+        i = generarAleatorio(0, PIEZAS.length - 1);
+    } while (!(piezas_disponibles & (1 << i)));
+
+    piezas_disponibles = piezas_disponibles & ~(1 << i);
     pieza_actual = PIEZAS[i];
+
+    if (piezas_disponibles === 0) {
+        piezas_disponibles = 0b1111111;
+    }
 }
