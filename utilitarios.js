@@ -25,3 +25,9 @@ function mostarEnSpanTxt(idComponente, valor) {
     let cmp = document.getElementById(idComponente);
     cmp.textContent = valor;
 }
+
+function generarAleatorio(min, max) {
+    let random = Math.random();
+    let numero = Math.floor(random * (max - min + 1)) + min;
+    return numero;
+}
